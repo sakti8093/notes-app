@@ -1,0 +1,36 @@
+.sidebar {
+  padding: 20px;
+}
+
+.sidebar > :first-child {
+  font-weight: 500;
+}
+
+.create-btn {
+  background-color: #000000;
+  padding: 10px;
+  text-align: center;
+  border-radius: 30px;
+  width: 320px;
+  color: #fff;
+  margin-top: 50px;
+}
+
+.groups {
+  padding: 0px 20px;
+}
+
+.group {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.group-logo {
+  background-color: blue;
+  padding: 20px;
+  text-align: center;
+  border-radius: 50%;
+  color: #fff;
+}
