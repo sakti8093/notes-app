@@ -1,10 +1,10 @@
 import "./sidebar.css";
-const SideBar = ({ data }) => {
+const SideBar = ({ data, handleModal }) => {
   return (
     <div className="sidebar">
       <p>Pocket Notes</p>
       <div className="groups">
-        <div className="create-btn">
+        <div onClick={handleModal} className="create-btn">
           <p> + Create Notes group</p>
         </div>
         {data?.map((elem, key) => (

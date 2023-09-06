@@ -1,0 +1,47 @@
+.modal {
+  width: 500px;
+  position: absolute;
+  top: 30%;
+  left: 40%;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 30px;
+  padding: 20px;
+}
+
+.colors-all {
+  display: flex;
+  gap: 10px;
+}
+
+.color {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.group-name {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.group-name input {
+  padding: 10px;
+  border: none;
+  border: 1px solid gray;
+}
+
+.pallete {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.modal button {
+  margin-top: 30px;
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+}
