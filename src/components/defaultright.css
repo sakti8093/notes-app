@@ -1,0 +1,20 @@
+.defaultright {
+  background-color: #f7ecdc;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.defaultright h3 {
+  font-size: 50px;
+  font-weight: 400;
+}
+
+.rightcontent {
+  width: 100%;
+  background-color: #f7ecdc;
+  height: calc(100vh - 110px);
+}

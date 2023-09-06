@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./modal.css";
 
 const colors = [
@@ -10,23 +10,34 @@ const colors = [
   "#6691FF",
 ];
 
-const Modal = () => {
+const Modal = ({ setGroups }) => {
+  const [newGroup, setNewGroup] = useState({
+    name: "",
+    color: "",
+  });
   return (
     <div className="modal">
       <p>Create New Notes group</p>
       <div className="group-name">
         <p>Group Name</p>
-        <input placeholder="Enter your group name" />
+        <input
+          onChange={(e) => setNewGroup({ ...newGroup, name: e.target.value })}
+          placeholder="Enter your group name"
+        />
       </div>
       <div className="pallete">
         <p>Choose Colour</p>
         <div className="colors-all">
           {colors.map((elem) => (
-            <div className="color" style={{ backgroundColor: elem }}></div>
+            <div
+              onClick={() => setNewGroup({ ...newGroup, color: elem })}
+              className="color"
+              style={{ backgroundColor: elem }}
+            ></div>
           ))}
         </div>
       </div>
-      <button>create</button>
+      <button onClick={() => setGroups(newGroup)}>create</button>
     </div>
   );
 };

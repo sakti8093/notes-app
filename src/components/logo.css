@@ -1,0 +1,19 @@
+.group-logo {
+  background-color: blue;
+  padding: 20px;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  border-radius: 50%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.logowrapper {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}

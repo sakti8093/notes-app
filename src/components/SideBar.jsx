@@ -1,5 +1,7 @@
+import { useState } from "react";
 import "./sidebar.css";
-const SideBar = ({ data, handleModal }) => {
+import Logo from "./Logo";
+const SideBar = ({ data, handleModal, setSelectedFroup }) => {
   return (
     <div className="sidebar">
       <p>Pocket Notes</p>
@@ -8,11 +10,12 @@ const SideBar = ({ data, handleModal }) => {
           <p> + Create Notes group</p>
         </div>
         {data?.map((elem, key) => (
-          <div key={key} className="group">
-            <div style={{ backgroundColor: elem.color }} className="group-logo">
-              <p>{elem?.name?.substring(0, 2).toUpperCase()}</p>
-            </div>
-            <p>{elem.name}</p>
+          <div
+            onClick={() => setSelectedFroup(elem)}
+            key={key}
+            className="group"
+          >
+            <Logo group={elem} />
           </div>
         ))}
       </div>
