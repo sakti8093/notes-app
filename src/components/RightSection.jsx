@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./rightsection.css";
 import arrow from "../assets/arrow.svg";
+import back from "../assets/back.svg";
 import Logo from "./Logo";
 const monthNames = [
   "January",
@@ -16,7 +17,12 @@ const monthNames = [
   "November",
   "December",
 ];
-const RightSection = ({ selectedGroup, handleModalClose, addContent }) => {
+const RightSection = ({
+  selectedGroup,
+  handleModalClose,
+  addContent,
+  setSelectedFroup,
+}) => {
   const [content, setContent] = useState("");
 
   const handleChange = (e) => {
@@ -39,10 +45,16 @@ const RightSection = ({ selectedGroup, handleModalClose, addContent }) => {
   return (
     <div onClick={handleModalClose} className="rightsection">
       <div className="header">
+        <img
+          onClick={() => {
+            setSelectedFroup(null);
+          }}
+          src={back}
+        />
         <Logo group={selectedGroup} />
       </div>
       <div className="rightcontent">
-        <div>
+        <div className="scrollcontent">
           {selectedGroup.data.map((elem) => (
             <div className="content">
               <div className="date">
@@ -50,7 +62,7 @@ const RightSection = ({ selectedGroup, handleModalClose, addContent }) => {
                 <p>{elem.date}</p>
               </div>
               <div>
-                <p>{elem.text}</p>
+                <p className="text">{elem.text}</p>
               </div>
             </div>
           ))}
@@ -63,7 +75,7 @@ const RightSection = ({ selectedGroup, handleModalClose, addContent }) => {
             id=""
             rows="10"
           ></textarea>
-          <img onClick={addToFroup} className="arrow" src={arrow} />
+          <img onPress={addToFroup} className="arrow" src={arrow} />
         </div>
       </div>
     </div>

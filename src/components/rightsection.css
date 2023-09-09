@@ -9,6 +9,10 @@
   padding: 20px;
 }
 
+.header > img {
+  display: none;
+}
+
 .rightcontent {
   width: 100%;
   background-color: #f7ecdc;
@@ -23,6 +27,13 @@
   border: none;
   padding: 20px;
   background-color: #e8e8e8;
+}
+
+.scrollcontent {
+  position: absolute;
+  bottom: 220px;
+  top: 0;
+  overflow: scroll;
 }
 
 .textarea {
@@ -46,4 +57,24 @@
 
 .date {
   width: 300px;
+}
+
+@media only screen and (max-width: 700px) {
+  .header {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+  }
+
+  .header > img {
+    display: block;
+  }
+
+  .content {
+    display: block;
+  }
+
+  .text {
+    margin-top: 20px;
+  }
 }

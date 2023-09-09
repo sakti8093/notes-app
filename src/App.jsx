@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Modal from "./components/Modal";
 import SideBar from "./components/sideBar";
@@ -24,6 +24,26 @@ function App() {
   const [showModal, setShowModaL] = useState(false);
   const [data, setData] = useState(DATA);
   const [selectedGroup, setSelectedFroup] = useState(null);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const isMobile = windowWidth < 700;
+
+  useEffect(() => {
+    // Function to update window width when the window is resized
+    const handleResize = () => {
+      console.log(window.innerWidth);
+      setWindowWidth(window.innerWidth);
+    };
+
+    // Attach the event listener when the component mounts
+    window.addEventListener("resize", handleResize);
+
+    // Remove the event listener when the component unmounts
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  console.log(isMobile);
 
   const handleModal = () => {
     setShowModaL(true);
@@ -36,6 +56,9 @@ function App() {
   const setGroups = (group) => {
     // add id to every group so that we can use that id for doing operation
     group.id = data.length + 1;
+    if (isMobile) {
+      setShowModaL(false);
+    }
     setData([...data, group]);
   };
 
@@ -56,20 +79,40 @@ function App() {
 
   return (
     <div className="app">
-      <SideBar
-        setSelectedFroup={setSelectedFroup}
-        handleModal={handleModal}
-        data={data}
-        selectedGroup={selectedGroup}
-      />
+      {!isMobile && (
+        <SideBar
+          setSelectedFroup={setSelectedFroup}
+          handleModal={handleModal}
+          data={data}
+          selectedGroup={selectedGroup}
+        />
+      )}
+      {isMobile ? (
+        selectedGroup ? (
+          <RightSection
+            handleModalClose={handleModalClose}
+            selectedGroup={selectedGroup}
+            addContent={addContent}
+            setSelectedFroup={setSelectedFroup}
+          />
+        ) : (
+          <SideBar
+            setSelectedFroup={setSelectedFroup}
+            handleModal={handleModal}
+            data={data}
+            selectedGroup={selectedGroup}
+          />
+        )
+      ) : null}
       {showModal && <Modal setGroups={setGroups} />}
-      {selectedGroup ? (
+      {selectedGroup && !isMobile && (
         <RightSection
           handleModalClose={handleModalClose}
           selectedGroup={selectedGroup}
           addContent={addContent}
         />
-      ) : (
+      )}
+      {!isMobile && !selectedGroup && (
         <DefaultRight handleModalClose={handleModalClose} />
       )}
     </div>
