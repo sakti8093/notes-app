@@ -14,6 +14,7 @@ const Modal = ({ setGroups }) => {
   const [newGroup, setNewGroup] = useState({
     name: "",
     color: "",
+    data: [],
   });
   return (
     <div className="modal">

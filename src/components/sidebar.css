@@ -1,5 +1,6 @@
 .sidebar {
   padding: 20px;
+  width: 330px;
 }
 
 .sidebar > :first-child {
@@ -11,15 +12,13 @@
   padding: 10px;
   text-align: center;
   border-radius: 30px;
-  width: 320px;
   color: #fff;
   margin-top: 50px;
 }
 
-.groups {
-  padding: 0px 20px;
-}
-
 .group {
-  margin-top: 30px;
+  padding: 20px;
+  margin-top: 20px;
+  margin-right: -20px;
+  border-radius: 32px 0px 0px 32px;
 }

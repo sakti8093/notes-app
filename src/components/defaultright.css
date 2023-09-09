@@ -12,9 +12,3 @@
   font-size: 50px;
   font-weight: 400;
 }
-
-.rightcontent {
-  width: 100%;
-  background-color: #f7ecdc;
-  height: calc(100vh - 110px);
-}
