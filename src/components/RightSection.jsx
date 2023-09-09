@@ -35,7 +35,7 @@ const RightSection = ({
     const minutes = date.getMinutes();
     const day = date.getDate().toString();
     const month = date.getMonth().toString();
-    const year = date.getYear().toString();
+    const year = date.getFullYear().toString();
     var ampm = hours >= 12 ? "PM" : "AM";
     const formattedDate = `${day} ${monthNames[month]} ${year}`;
     const time = `${hours} : ${minutes} : ${ampm}`;
@@ -55,8 +55,8 @@ const RightSection = ({
       </div>
       <div className="rightcontent">
         <div className="scrollcontent">
-          {selectedGroup.data.map((elem) => (
-            <div className="content">
+          {selectedGroup.data.map((elem, key) => (
+            <div key={key} className="content">
               <div className="date">
                 <p>{elem.time}</p>
                 <p>{elem.date}</p>
@@ -75,7 +75,7 @@ const RightSection = ({
             id=""
             rows="10"
           ></textarea>
-          <img onPress={addToFroup} className="arrow" src={arrow} />
+          <img onClick={addToFroup} className="arrow" src={arrow} />
         </div>
       </div>
     </div>
