@@ -40,6 +40,9 @@
   width: 100%;
   border: none;
   position: relative;
+  padding: 10px;
+  height: 200px;
+  font-size: 20px;
 }
 
 .arrow {

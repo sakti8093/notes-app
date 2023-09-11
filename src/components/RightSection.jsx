@@ -71,9 +71,13 @@ const RightSection = ({
           <textarea
             onChange={handleChange}
             className="textarea"
+            onKeyDown={(e) => {
+              if (e.code == "Enter") {
+                addToFroup();
+              }
+            }}
             name=""
             id=""
-            rows="10"
           ></textarea>
           <img onClick={addToFroup} className="arrow" src={arrow} />
         </div>

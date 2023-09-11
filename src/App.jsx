@@ -22,7 +22,9 @@ const DATA = [
 
 function App() {
   const [showModal, setShowModaL] = useState(false);
-  const [data, setData] = useState(DATA);
+  const [data, setData] = useState(
+    JSON.parse(localStorage.getItem("notes")) || DATA
+  );
   const [selectedGroup, setSelectedFroup] = useState(null);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const isMobile = windowWidth < 700;
@@ -34,10 +36,8 @@ function App() {
       setWindowWidth(window.innerWidth);
     };
 
-    // Attach the event listener when the component mounts
     window.addEventListener("resize", handleResize);
 
-    // Remove the event listener when the component unmounts
     return () => {
       window.removeEventListener("resize", handleResize);
     };
@@ -59,7 +59,12 @@ function App() {
     if (isMobile) {
       setShowModaL(false);
     }
-    setData([...data, group]);
+    setData((prev) => {
+      let data = [...prev];
+      data.push(group);
+      localStorage.setItem("notes", JSON.stringify(data));
+      return data;
+    });
   };
 
   const addContent = (text, formattedDate, time) => {
@@ -75,6 +80,7 @@ function App() {
     copyData[copySelectedGroup.id - 1] = copySelectedGroup;
     setSelectedFroup(copySelectedGroup);
     setData(copyData);
+    localStorage.setItem("notes", JSON.stringify(copyData));
   };
 
   return (
